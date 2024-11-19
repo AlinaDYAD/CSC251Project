@@ -8,7 +8,7 @@ public class PolicyHolder {
     private double weight; // in pounds
 
     // No-arg constructor
-    public PolicyHolder() {
+    /*public PolicyHolder() {
         firstName = " ";
         lastName = " ";
         age = 0;
@@ -16,15 +16,16 @@ public class PolicyHolder {
         height = 0.0;
         weight = 0.0;
     }
-
+    */
+    
     // Argument constructor
-    public PolicyHolder(String first, String last, int ageParam, String smoke, double h, double w) {
-        firstName = first;
-        lastName = last;
-        age = ageParam;
-        smokingStatus = smoke;
-        height = h;
-        weight = w;
+    public PolicyHolder(String firstName, String lastName, int age, String smokingStatus, double height, double weight) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.smokingStatus = smokingStatus;
+        this.height = height;
+        this.weight = weight;
     }
 
     // Getters and setters
@@ -41,9 +42,9 @@ public class PolicyHolder {
    Set the plicyholder's fist name.
    @param first The first name to set
    */
-   public void setFirstName(String fist)
+   public void setFirstName(String fistName)
    {
-      firstName = fist;
+      this.firstName = firstName;
    }
    
    
@@ -60,9 +61,9 @@ public class PolicyHolder {
    Set the plicyholder's last name.
    @param last The last name to set
    */
-   public void setLastName(String last)
+   public void setLastName(String lastName)
    {
-      lastName = last;
+      this.lastName = lastName;
    }
    
       
@@ -79,9 +80,9 @@ public class PolicyHolder {
    Set the plicyholder's age.
    @param ageParam The age to set
    */
-   public void setAge(int ageParam)
+   public void setAge(int age)
    {
-      age = ageParam;
+      this.age = age;
    }
    
    
@@ -98,9 +99,9 @@ public class PolicyHolder {
    Set the plicyholder's smoking status.
    @param smoke The smoking status to set
    */
-   public void setSmokingStatus(String smoke)
+   public void setSmokingStatus(String smokingStatus)
    {
-      smokingStatus = smoke;
+      this.smokingStatus = smokingStatus;
    }
    
    /**
@@ -116,9 +117,9 @@ public class PolicyHolder {
    Set the plicyholder's height.
    @param h The height to set in inches
    */
-   public void setHeight(double h)
+   public void setHeight(double height)
    {
-      height = h;
+      this.height = height;
    }
    
    
@@ -135,13 +136,28 @@ public class PolicyHolder {
    Set the plicyholder's weight.
    @param w The weight to set in pounds
    */
-   public void setWeight(double w)
+   public void setWeight(double weight)
    {
-      weight = w;
+      this.weight = weight;
    }
 
     // Calculate BMI
     public double calculateBMI() {
         return (weight * 703) / (height * height);
+    }
+    
+    // toString method
+    @Override
+    public String toString() 
+    {
+        return "PolicyHolder{" +
+                "First Name='" + firstName + '\'' +
+                ", Last Name='" + lastName + '\'' +
+                ", Age=" + age +
+                ", Smoking Status='" + smokingStatus + '\'' +
+                ", Height=" + height +
+                " inches, Weight=" + weight +
+                " pounds, BMI=" + String.format("%.2f", calculateBMI()) +
+                '}';
     }
 }
