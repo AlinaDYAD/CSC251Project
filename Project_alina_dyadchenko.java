@@ -36,7 +36,10 @@ public class Project_alina_dyadchenko
             fileScanner.nextLine(); //clear the newline
             
             //Create a Policy object with the read values
-            Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
+            PolicyHolder policyHolder = new PolicyHolder(firstName, lastName, age, smokingStatus, height, weight);
+            
+            //Create a Policy Obkect with the PolicyHolder
+            Policy policy = new Policy(policyNumber, providerName, policyHolder);
             
             //Add the Polucy object to the ArrayList
             policies.add(policy);
@@ -46,16 +49,19 @@ public class Project_alina_dyadchenko
          //Display the policy information and calculated results
          for (Policy policy : policies)
          {
+            System.out.println(policy);
+            /*PolicyHolder holder = policy.getPolicyHolder(); //Acess the PolicyHolder object
             System.out.println("\nPolicy Number: " + policy.getPolicyNumber());
             System.out.println("Provider Name: " + policy.getTheName());
-            System.out.println("Policyholder's Fist Name: " + policy.getFirstName());
-            System.out.println("Policyholder's Last Name: " + policy.getLastName());
-            System.out.println("Policyholder's Age: " + policy.getTheAge());
-            System.out.println("Policyholder's Smoking Status: " + policy.getSmokingStatus());
-            System.out.println("Policyholder's Height: " + policy.getHeight());
-            System.out.println("Policyholder's Weight: " + policy.getWeight());
-            System.out.printf("Policyholder's BMI: %.2f\n", policy.calculateBMI());
+            System.out.println("Policyholder's Fist Name: " + holder.getFirstName());
+            System.out.println("Policyholder's Last Name: " + holder.getLastName());
+            System.out.println("Policyholder's Age: " + holder.getAge());
+            System.out.println("Policyholder's Smoking Status: " + holder.getSmokingStatus());
+            System.out.println("Policyholder's Height: " + holder.getHeight());
+            System.out.println("Policyholder's Weight: " + holder.getWeight());
+            System.out.printf("Policyholder's BMI: %.2f\n", holder.calculateBMI());
             System.out.printf("Policy Price: $%.2f\n", policy.calculatePolicyPrice());
+            */
          }
       
       //Count smokers and non-smokers
@@ -64,7 +70,7 @@ public class Project_alina_dyadchenko
       
       for (Policy policy : policies)
       {
-         if (policy.getSmokingStatus().equalsIgnoreCase("smoker"))
+         if (policy.getPolicyHolder().getSmokingStatus().equalsIgnoreCase("smoker"))
          {
             smokerCount++;
          } else 
@@ -72,6 +78,8 @@ public class Project_alina_dyadchenko
                nonSmokerCount++;
             }
       }
+      //Display the total number of policies created
+      System.out.println("\nThere were " + Policy.getPolicyCount() + " Policy objects created.");
       
       //Display the counts of smokers and non-smokers
       System.out.println("\nThe number of policies with smoker is: " + smokerCount);
