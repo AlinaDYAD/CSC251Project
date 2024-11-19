@@ -5,12 +5,16 @@ public class Policy
    private String theName; //Provider name
    private PolicyHolder policyHolder; //Use PolicyHolder
    
+   //Static field to tracl the number of Policy objects created
+   private static int policyCount = 0;
+   
    //No-arg constructor: initialize the attributes to default values
    public Policy()
    {
       this.policyNumber = 0;
-      this.theName = " ";
-      this.policyHolder = new PolicyHolder("", "", 0, "", 0.0, 0.0);
+      this.theName = "Unknown provider";
+      this.policyHolder = new PolicyHolder("unknown", "Unknown", 0, "Non-Smoker", 0.0, 0.0);
+      policyCount++;
    }
    
    /**
@@ -23,6 +27,7 @@ public class Policy
       this.policyNumber = policyNumber;
       this.theName = theName;
       this.policyHolder = policyHolder;
+      policyCount++;
    }
    
    //Getters and setters methods for each attribute
@@ -108,6 +113,12 @@ public class Policy
       }
       
       return price;
+   }
+   
+   //Static method to get the count of Policy objects
+   public static int getPolicyCount()
+   {
+      return policyCount;
    }
    
     // toString method
