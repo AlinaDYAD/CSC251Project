@@ -8,27 +8,21 @@ public class Policy
    //No-arg constructor: initialize the attributes to default values
    public Policy()
    {
-      policyNumber = 0;
-      theName = " ";
-      policyHolder = new PolicyHolder();
+      this.policyNumber = 0;
+      this.theName = " ";
+      this.policyHolder = new PolicyHolder("", "", 0, "", 0.0, 0.0);
    }
    
    /**
    Argument Constructor: initialize the attributes with specified values
    @param policyNum The policy number
    @param name The provider name
-   @param first The policyholder's first name
-   @param last The policyholder's last name
-   @param theAge The policyholder's age
-   @param smoke The policyholder's smoking status
-   @param h The policyholder's height in inches
-   @param w The policyholder's weight in pounds
    */
-   public Policy(int policyNum, String name, PolicyHolder holder)
+   public Policy(int policyNumber, String theName, PolicyHolder policyHolder)
    {
-      policyNumber = policyNum;
-      theName = name;
-      policyHolder = holder;
+      this.policyNumber = policyNumber;
+      this.theName = theName;
+      this.policyHolder = policyHolder;
    }
    
    //Getters and setters methods for each attribute
@@ -46,9 +40,9 @@ public class Policy
    Set the plicy number.
    @param polNum The policy number to set
    */
-   public void setPolicyNumber(int polNum)
+   public void setPolicyNumber(int policyNumber)
    {
-      policyNumber = polNum;
+      this.policyNumber = policyNumber;
    }
    
    
@@ -65,9 +59,9 @@ public class Policy
    Set the provider name.
    @param name The provider name to set
    */
-   public void setTheName(String name)
+   public void setTheName(String theName)
    {
-      theName = name;
+      this.theName = theName;
    }
    
    /**
@@ -83,9 +77,9 @@ public class Policy
    Set the Policyholder
    @param holder The holder to set
    */
-   public void setPolicyHolder(PolicyHolder holder)
+   public void setPolicyHolder(PolicyHolder policyHolder)
    {
-      policyHolder = holder;
+      this.policyHolder = policyHolder;
    }
    
       
@@ -115,6 +109,18 @@ public class Policy
       
       return price;
    }
+   
+    // toString method
+    @Override
+    public String toString() 
+    {
+        return "Policy{" +
+                "Policy Number=" + policyNumber +
+                ", Provider Name='" + theName + '\'' +
+                ", Policy Holder=" + policyHolder +
+                ", Policy Price=$" + String.format("%.2f", calculatePolicyPrice()) +
+                '}';
+    }
   
    
 }
