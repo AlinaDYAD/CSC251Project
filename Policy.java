@@ -125,13 +125,16 @@ public class Policy
     @Override
     public String toString() 
     {
-        return "Policy{" +
-                "Policy Number=" + policyNumber +
-                ", Provider Name='" + theName + '\'' +
-                ", Policy Holder=" + policyHolder +
-                ", Policy Price=$" + String.format("%.2f", calculatePolicyPrice()) +
-                '}';
-    }
-  
+        return "Policy Number: " + policyNumber + "\n" +
+                "Provider Name: " + theName + "\n" +
+                "Policyholder's First Name: " + policyHolder.getFirstName() + "\n" +
+                "Policyholder's Last Name: " + policyHolder.getLastName() + "\n" +
+                "Policyholder's Age: " + policyHolder.getAge() + "\n" +
+                "Policyholder's Smoking Status (Y/N): " + policyHolder.getSmokingStatus() + "\n" +
+                "Policyholder's Height: " + policyHolder.getHeight() + " inches\n" +
+                "Policyholder's Weight: " + policyHolder.getWeight() + " pounds\n" +
+                "Policyholder's BMI: " + String.format("%.2f", policyHolder.calculateBMI()) + "\n" +
+                "Policy Price: $" + String.format("%.2f", calculatePolicyPrice()) + "\n";
+    }  
    
 }
